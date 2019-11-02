@@ -11,7 +11,7 @@ TERRAFORM=~/bin/terraform # path to terraform executable
 RESTART_WAIT_TIME=180 # in seconds
 
 CANDIDATE_SLUG=$1
-CANDIDATE_DNS=`echo ${CANDIDATE_SLUG} | sed 's/-//'`
+CANDIDATE_DNS=`echo ${CANDIDATE_SLUG} | sed 's/-//'` # Strips the `-` out of the candidate name
 EXPIRES=`date -v +1m +"%Y-%m-%d"`
 TFVARS=terraform.tfvars
 TFPLAN=tf.plan
