@@ -47,8 +47,8 @@ echo app_dns = ${APP_DNS} > ${INFO_FILE}
 echo username = ${CANDIDATE_DNS} >> ${INFO_FILE}
 echo site_url = http://${APP_DNS}:8080 >> ${INFO_FILE}
 echo admin_url = http://${APP_DNS}:8080/admin >> ${INFO_FILE}
-echo ssh_access = ssh -i ese_rsa ${CANDIDATE_DNS}@${APP_DNS}
-echo expires = ${EXPIRES}
+echo ssh_access = ssh -i ese_rsa ${CANDIDATE_DNS}@${APP_DNS} >> ${INFO_FILE}
+echo expires = ${EXPIRES} >> ${INFO_FILE}
 
 # Zip up SSH Keys and DNS info
 zip -9 access-info.zip ese_rsa* candidate-info.txt
