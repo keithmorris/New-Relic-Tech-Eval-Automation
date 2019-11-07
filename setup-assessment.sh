@@ -39,10 +39,6 @@ echo expiration = \"${EXPIRES}\" >> ${TFVARS}
 echo username = \"${CANDIDATE_DNS}\" >> ${TFVARS}
 echo location = \"${LOCATION}\" >> ${TFVARS}
 
-cat ${TFVARS}
-echo "Terraform binary: ${TERRAFORM}"
-exit
-
 ${TERRAFORM} init
 ${TERRAFORM} plan -out ${TFPLAN}
 ${TERRAFORM} apply ${TFPLAN}
