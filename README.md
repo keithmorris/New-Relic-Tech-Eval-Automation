@@ -4,9 +4,10 @@ There are a few things you will need to update to use this:
 
 1. Copy `config.sample.sh` to `config.sh`
 2. Get your credentials using the `az account show` command and fill in the values in the `config.sh`
-3. There is a variable set within the `setup-assessment.sh` file called `$TERRAFORM`. This is the path to your locally installed Terraform. I needed this because I had two versions installed. You will need to point this to your terraform executable. You should be able to run the command `which terraform` to get the path to your installed version.
-4. There is a `$LOCATION` variable that is set to `eastus`. If you'd like the environment to be created in the Azure West region, change this to `westus`
-5. There is an $EXPIRES variable that sets the candidate user to expire 1 month from the time the script is run. Feel free to update this if needed.
+3. Update the optional variables for `$TERRAFORM`, `$EXPIRES`, and `$LOCATION` in the `config.sh` file as required for your specific needs.
+4. There is a variable set within the `setup-assessment.sh` file called `$TERRAFORM`. This is the path to your locally installed Terraform. I needed this because I had two versions installed. You will need to point this to your terraform executable. You should be able to run the command `which terraform` to get the path to your installed version.
+5. There is a `$LOCATION` variable that is set to `eastus`. If you'd like the environment to be created in the Azure West region, change this to `westus`
+6. There is an $EXPIRES variable that sets the candidate user to expire 1 month from the time the script is run. Feel free to update this if needed.
 
 ## How to use:
 1. You can put these scripts in the root directory of wherever you check out the eval repository (like below). You can even clone the repo there as the `.gitignore` ignores everything but the script files.
