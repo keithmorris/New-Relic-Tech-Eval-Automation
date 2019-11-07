@@ -1,5 +1,5 @@
 **/*
 !.gitignore
 !setup-assessment.sh
-!creds.sample.sh
+!config.sample.sh
 !README.md

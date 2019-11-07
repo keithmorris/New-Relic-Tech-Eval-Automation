@@ -5,17 +5,17 @@ if [ -z "$1" ]
     exit 1
 fi
 
-source creds.sh
+source config.sh
 
-TERRAFORM=~/bin/terraform # path to terraform executable
+TERRAFORM="${TERRAFORM:-terraform}"
 RESTART_WAIT_TIME=180 # in seconds
+TFVARS=terraform.tfvars
+TFPLAN=tf.plan
 
 CANDIDATE_SLUG=`echo $1 | sed 's/ /-/g' | awk '{print tolower($0)}'`
 CANDIDATE_DNS=`echo ${CANDIDATE_SLUG} | sed 's/-//g'` # Strips the `-` out of the candidate name
-EXPIRES=`date -v +1m +"%Y-%m-%d"`
-TFVARS=terraform.tfvars
-TFPLAN=tf.plan
-LOCATION=eastus
+EXPIRES="${EXPIRES:-`date -v +1m +"%Y-%m-%d"`}"
+LOCATION="${LOCATION:-eastus}"
 APP_DNS=${CANDIDATE_DNS}-nr-candidate-lab-app.${LOCATION}.cloudapp.azure.com
 INFO_FILE=candidate-info.txt
 
@@ -38,6 +38,10 @@ echo tenant_id = \"${TENANT_ID}\" >> ${TFVARS}
 echo expiration = \"${EXPIRES}\" >> ${TFVARS}
 echo username = \"${CANDIDATE_DNS}\" >> ${TFVARS}
 echo location = \"${LOCATION}\" >> ${TFVARS}
+
+cat ${TFVARS}
+echo "Terraform binary: ${TERRAFORM}"
+exit
 
 ${TERRAFORM} init
 ${TERRAFORM} plan -out ${TFPLAN}
