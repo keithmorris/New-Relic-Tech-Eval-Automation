@@ -28,7 +28,7 @@ countdownTimer() {
 }
 
 # Do the thing
-git clone https://github.com/davemurphysf/NewRelicCandiateLabEnv.git ${CANDIDATE_SLUG}
+git clone https://github.com/keithmorris/NewRelicCandiateLabEnv.git ${CANDIDATE_SLUG}
 cd ${CANDIDATE_SLUG}
 ssh-keygen -f ese_rsa -N '' -b 4096
 
