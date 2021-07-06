@@ -9,13 +9,23 @@ There are a few things you will need to update to use this:
 5. There is a `$LOCATION` variable that is set to `eastus`. If you'd like the environment to be created in the Azure West region, change this to `westus`
 6. There is an $EXPIRES variable that sets the candidate user to expire 1 month from the time the script is run. Feel free to update this if needed.
 
+## IMPORTANT
+
+### Terraform version
+
+The Terraform script that generates the environment **DOES NOT** work with the latest version of Terraform. However, it works perfectly with versions < 0.12.0. Currently I use `v0.11.14` without any issues. You can find [older versions of Terraform here](https://releases.hashicorp.com/terraform/).
+
+### .gitignore
+
+The `.gitignore` file is set up so that it ignores everything except the specific files for this repository. As such, for convenience you can just run the `setup-assessment.sh` and it will create a subfolder in the current folder which will be ignored by git.
+
 ## How to use:
 1. You can put these scripts in the root directory of wherever you check out the eval repository (like below). You can even clone the repo there as the `.gitignore` ignores everything but the script files.
 2. Now, just run the command with the candidate name kebab-case or with spaces in quotes (e.g. `./setup-assessment.sh keith-morris` or `./setup-assessment.sh "Keith Morris"` (Note, the script will take the `"Keith Morris"` and convert it to `keith-morris`.
 
 ## What this does:
 
-1. Clones the repo https://github.com/davemurphysf/NewRelicCandiateLabEnv.git into a new directory with the candidate name (e.g. keith-morris)
+1. Clones the repo [https://github.com/keithmorris/NewRelicCandiateLabEnv](https://github.com/keithmorris/NewRelicCandiateLabEnv) into a new directory with the candidate name (e.g. keith-morris)
 2. Generates a new SSH key ese_rsa for the candidate
 3. Create a terraform variables file with the candidate-specific values and location 
 4. Initializes Terraform, outputs the plan, then applies the plan
