@@ -16,7 +16,4 @@ archivelab() {
 	mv ${1}.tar.xz _ARCHIVE/
 }
 
-pushd ${1}
-~/bin/terraform destroy -auto-approve
-popd
-archivelab ${1}
+pushd ${1} && ~/bin/terraform destroy -auto-approve && popd && archivelab ${1}
